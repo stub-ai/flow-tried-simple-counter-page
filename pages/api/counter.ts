@@ -11,7 +11,11 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   if (req.method === 'POST') {
-    counter++;
+    if (req.url && req.url.endsWith('/increment')) {
+      counter++;
+    } else if (req.url && req.url.endsWith('/decrement')) {
+      counter--;
+    }
   }
   res.status(200).json({ value: counter })
 }

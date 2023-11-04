@@ -10,7 +10,13 @@ const Counter = () => {
   }, []);
 
   const increment = () => {
-    fetch('/api/counter', { method: 'POST' })
+    fetch('/api/counter/increment', { method: 'POST' })
+      .then(response => response.json())
+      .then(data => setCount(data.value));
+  };
+
+  const decrement = () => {
+    fetch('/api/counter/decrement', { method: 'POST' })
       .then(response => response.json())
       .then(data => setCount(data.value));
   };
@@ -22,6 +28,12 @@ const Counter = () => {
         onClick={increment}
       >
         Increase
+      </button>
+      <button
+        className="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-700 active:bg-red-800 focus:outline-none"
+        onClick={decrement}
+      >
+        Decrease
       </button>
       <span className="text-xl">{count}</span>
     </div>
