@@ -10,13 +10,13 @@ const Counter = () => {
   }, []);
 
   const increment = () => {
-    fetch('/api/counter/increment', { method: 'POST' })
+    fetch('/api/increment', { method: 'POST' })
       .then(response => response.json())
       .then(data => setCount(data.value));
   };
 
   const decrement = () => {
-    fetch('/api/counter/decrement', { method: 'POST' })
+    fetch('/api/decrement', { method: 'POST' })
       .then(response => response.json())
       .then(data => setCount(data.value));
   };
