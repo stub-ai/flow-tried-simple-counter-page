@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-
-let counter = 0;
+import { counter } from './counter';
 
 type Data = {
   value: number
@@ -11,7 +10,7 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   if (req.method === 'POST') {
-    counter++;
+    counter.value++;
   }
-  res.status(200).json({ value: counter })
+  res.status(200).json({ value: counter.value })
 }
